@@ -4,8 +4,8 @@
 - Content Delivery Network (CDN).
 - Caching frequently requested content at the edge locations.
 - DDoS protection through WAF & Shield.
-- Origins:
-  - S3 Bucket: send[^1] and cache files at the edge locations.
+- Origins[^1]:
+  - S3 Bucket: send[^2] and cache files at the edge locations.
     - Control access with OAC (Origin Access Control).
   - Application Load Balancer.
   - EC2 instance.
@@ -26,10 +26,11 @@
 | CloudFront                           | S3 cross region replication             |
 | ------------------------------------ | --------------------------------------- |
 | Utilizes global edge network of AWS. | Needs to be configured for each region. |
-| Caches have TTL[^2].                 | Files are replicated (not cached).      |
+| Caches have TTL[^3].                 | Files are replicated (not cached).      |
 | Good for static content.             | Good for dynamic content.               |
 
 ## Footnotes
 
-[^1]: It is called ingres.
-[^2]: Time To Live.
+[^1]: An origin is the location where content is stored, and from which CloudFront gets content to serve to viewers.
+[^2]: It is called ingres.
+[^3]: Time To Live.

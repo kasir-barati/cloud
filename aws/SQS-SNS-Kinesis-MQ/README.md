@@ -51,7 +51,11 @@ Our apps need to talk to each other. And we have two type of communication
       <td>
         <ul>
           <li>Decoupling.</li>
-          <li>Scalability.</li>
+          <li>
+            <a href="../glossary.md#scalabilityGlobalGlossary" >
+              Scalability.
+            </a>
+          </li>
           <li>Performance.</li>
           <li>Resilience and Fault Tolerance.</li>
         </ul>
@@ -364,5 +368,5 @@ In General you need to consider these topic when choosing between them:
 0. Are you migrating to the cloud? if yes, you might wanna stick to your open protocol since you do not need to refactor your app. At least for the time being.
 1. Costs.
 2. Speed.
-3. scalability.
+3. <a href="../glossary.md#scalabilityGlobalGlossary">Scalability</a>.
 4. Maintenance.
