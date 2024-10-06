@@ -42,4 +42,14 @@
   <dd>
     New IT resources are available on-demand.
   </dd>
+  <dt id="distributedSystems">
+    <a href="#distributedSystems">#</a>
+    Distributed systems:
+  </dt>
+  <dd>
+    Multiple computers work together to solve a common problem (<a href="https://aws.amazon.com/what-is/distributed-computing/">ref</a>).
+  </dd>
+  <dd>
+    Computer systems whose inter-communicating components are located on different networked computers (<a href="https://en.wikipedia.org/wiki/Distributed_computing">ref</a>).
+  </dd>
 </dl>
