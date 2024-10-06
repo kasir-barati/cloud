@@ -1,5 +1,6 @@
 <dl>
   <dt id="iopsGlobalGlossary">
+    <a href="#iopsGlobalGlossary">#</a>
     IOPS:
   </dt>
   <dd>
@@ -20,19 +21,22 @@
       </li>
     </ul>
   </dd>
-  <dt id="#elasticityGlobalGlossary">
+  <dt id="elasticityGlobalGlossary">
+    <a href="#elasticityGlobalGlossary">#</a>
     Elasticity:
   </dt>
   <dd>
     The ability to acquire resources as you need them and release resources when you no longer need them. E.g. auto-scaling.
   </dd>
-  <dt id="#scalabilityGlobalGlossary">
+  <dt id="scalabilityGlobalGlossary">
+    <a href="#scalabilityGlobalGlossary">#</a>
     Scalability:
   </dt>
   <dd>
     Being able to accommodate a large load by scaling up or out.
   </dd>
-  <dt id="#agilityGlobalGlossary">
+  <dt id="agilityGlobalGlossary">
+    <a href="#agilityGlobalGlossary">#</a>
     Agility:
   </dt>
   <dd>
