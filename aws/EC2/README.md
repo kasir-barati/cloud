@@ -25,7 +25,7 @@
 
     > [!CAUTION]
     >
-    > Do not configure your `aws` here (`aws configure`), It poses a lot of security risks and hard to debug time because we cannot track exactly who with which access rights did what.
+    > Do not configure your `aws` here (`aws configure`), It poses a lot of security risks and hard to debug. Because we cannot track exactly who, with which access rights did what.
 
   - AMI:
 
@@ -49,7 +49,7 @@
         - AMI creation.
         - Maintenance (update OS, libs, etc).
         - Validation (it is working the way it is intended to).
-      - This is an free separate service.
+      - This is a free separate service.
         - We'll pay of course for the underlying resources that will be used.
 
   - We can use IAM roles to let our EC2 instance work with other services.
