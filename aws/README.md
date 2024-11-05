@@ -35,25 +35,12 @@
 - Stands for Distributed Denial of Service.
 - Protect your app against DDoS with:
 
-  | Option          | Cost         | Protect apps                                                                        |
-  | --------------- | ------------ | ----------------------------------------------------------------------------------- |
-  | Shield standard | Free         | Against common, most frequently occurring network and transport layer DDoS attacks. |
-  | Shield advanced | Paid service | Against DDoS attacks, volumetric bots, and vulnerability exploitation attempts.     |
-  | WAF & Shield    | Paid service | Against common attack patterns (e.g. SQL injection or cross-site scripting (XSS)).  |
+  | Option                          | Cost         | Protect apps                                                                        |
+  | ------------------------------- | ------------ | ----------------------------------------------------------------------------------- |
+  | Shield standard                 | Free         | Against common, most frequently occurring network and transport layer DDoS attacks. |
+  | Shield advanced                 | Paid service | Against DDoS attacks, volumetric bots, and vulnerability exploitation attempts.     |
+  | [WAF & Shield](./WAF/README.md) | Paid service | Against common attack patterns (e.g. SQL injection or cross-site scripting (XSS)).  |
 
-  - WAF & Shield:
-    - Web Application Framework.
-    - Charged for rules inside rule groups that are created by you.
-    - Works on layer 7:
-      - Create rules to to filter web requests based on:
-        - Their size.
-        - Their location (geo-match).
-        - Conditions such as IP addresses, HTTP headers and body, or custom URIs.
-        - Rate: A rate-based rule that shields against DDoS by utilizing globally distributed network of AWS edge locations:
-          - **Route 53**: Only allow valid DNS requests to reach the service.
-          - **CloudFront**: Only allowing valid traffics for web applications to pass through to the service.
-      - Protects our app against SQL injection and XSS (cross-site scripting).
-      - Deployed on [ALB](./EC2/README.md#alb), API gateway, and CloudFront.
   - Common attacks:
     - SYN/UDP floods.
     - Reflection attack.
