@@ -1,0 +1,19 @@
+title: Cloud
+email: kasir.barati@gmail.com
+description:
+    >- # this means to ignore newlines until "baseurl:"
+    Write an awesome doc for cloud and how to deploy our apps using technologies like AWS, GitHub actions, CI/CD and Docker. Also a very comprehensive documentation around AWS.
+baseurl: '/cloud' # the repository name
+url: '' # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: kasir_barati
+github_username: kasir-barati
+plugins:
+    - jekyll-relative-links
+    - jekyll-remote-theme # add this line to the plugins list if you already have one
+relative_links:
+    enabled: true
+    collections: true
+remote_theme: pages-themes/hacker@v0.2.0
+kramdown:
+    math_engine: mathjax
+    syntax_highlighter: rouge
