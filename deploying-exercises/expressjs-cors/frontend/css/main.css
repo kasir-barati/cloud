@@ -1,0 +1,71 @@
+.wrapper {
+  border-inline: 0.0625rem solid #dbdbdb47;
+  border-block: 0.0625rem solid #dbdbdb47;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  inline-size: 40vw;
+  border-radius: 1rem;
+  background-color: #00000052;
+  position: absolute;
+  --text-color: #dbdbdb8c;
+  cursor: grab;
+
+  .wrapper__header {
+    color: #dbdbdb47;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1.25rem;
+    letter-spacing: 0.45rem;
+    font-weight: 400;
+    margin-block-end: 0.75rem;
+  }
+  .wrapper__intro {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-block-end: 1.25rem;
+  }
+  .wrapper__final-word {
+    color: var(--text-color);
+    margin-block-end: 0.75rem;
+
+    a {
+      font-weight: bold;
+      transition: all 0.3s linear 0s;
+
+      &:hover {
+        color: orangered;
+      }
+    }
+  }
+  .wrapper__footer {
+    position: absolute;
+    inset-block-end: -0.5rem;
+    inset-inline-end: -0.5rem;
+
+    address {
+      display: flex;
+      gap: 0.5rem;
+
+      a {
+        transition: all 0.3s linear 0s;
+
+        &.github:hover,
+        &.dev-dot-to:hover,
+        &.x:hover {
+          color: black;
+        }
+        &.instagram:hover {
+          color: #ffa800;
+        }
+        &.stackoverflow:hover {
+          color: #f48024;
+        }
+        &.linkedin:hover {
+          color: #0b63bd;
+        }
+        &.facebook:hover {
+          color: #0866ff;
+        }
+      }
+    }
+  }
+}
