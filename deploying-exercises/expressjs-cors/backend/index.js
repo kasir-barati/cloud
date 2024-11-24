@@ -1,8 +1,8 @@
 // @ts-check
 
-import cors from "cors";
-import express from "express";
-import { loadEnv } from "./load-env";
+import cors from 'cors';
+import express from 'express';
+import { loadEnv } from './load-env';
 
 await loadEnv();
 
@@ -18,20 +18,20 @@ app.use(
   cors({
     origin(origin, callback) {
       if (whitelist.indexOf(origin) === -1) {
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error('Not allowed by CORS'));
         return;
       }
       callback(null, true);
     },
-    methods: ["GET", "PUT", "POST"],
+    methods: ['GET', 'PUT', 'POST'],
     credentials: true,
-  })
+  }),
 );
 
-app.put("/", (_req, res) => {
-  res.send({ message: "cors" });
+app.put('/', (_req, res) => {
+  res.send({ message: 'cors' });
 });
 
 app.listen(APP_PORT);
 
-console.log("Server is up and running!");
+console.log('Server is up and running!');

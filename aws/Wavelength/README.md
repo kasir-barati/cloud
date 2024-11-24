@@ -19,5 +19,7 @@
 ## Footnotes
 
 [^1]: In the context of telecommunications it is a company that provides communication services. services like voice, data, and internet connectivity. Carriers operate the infrastructure necessary to deliver these services, such as mobile networks, broadband networks, and data centers. Here a carrier refers to a telecommunications company that offers 5G network infrastructure. By placing AWS services at the edge of these carriers' 5G networks, Wavelength enables applications to take advantage of lower latency and closer proximity to end-users. Examples of carriers include Verizon, AT&T, and T-Mobile in the United States, or Vodafone and Deutsche Telekom in Europe.
+
 [^2]: Vehicles that are equipped with internet connectivity and various sensors, enabling them to communicate with other vehicles, infrastructure, and various external systems.
+
 [^3]: ML algorithms to assist in the diagnosis of diseases and medical conditions.

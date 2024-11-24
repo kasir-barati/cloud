@@ -24,5 +24,7 @@
 ## Footnotes
 
 [^1]: Network File System.
+
 [^2]: Volume (GB) and [IOPS](../glossary.md#iopsGlobalGlossary).
+
 [^3]: Infrequent Access.

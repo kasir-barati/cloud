@@ -1,12 +1,13 @@
 // @ts-check
 
-fetch("http://localhost:3000", {
-  method: "put",
-  credentials: "include",
+fetch('http://localhost:3000', {
+  method: 'put',
+  credentials: 'include',
 })
   .then((response) => response?.json())
   .then(({ message }) => {
-    const serverResponsePlaceholder = document.getElementById("serverResponse");
+    const serverResponsePlaceholder =
+      document.getElementById('serverResponse');
 
     assertElementExists(serverResponsePlaceholder);
 
@@ -14,7 +15,9 @@ fetch("http://localhost:3000", {
   })
   .catch(console.error);
 
-const draggableWrapper = document.getElementById("draggableWrapper");
+const draggableWrapper = document.getElementById(
+  'draggableWrapper',
+);
 
 assertElementExists(draggableWrapper);
 
@@ -45,10 +48,10 @@ function dragElement(event) {
   assertElementExists(draggableWrapper);
 
   draggableWrapper.style.top =
-    draggableWrapper.offsetTop - newCursorPositionY + "px";
+    draggableWrapper.offsetTop - newCursorPositionY + 'px';
   draggableWrapper.style.left =
-    draggableWrapper.offsetLeft - newCursorPositionX + "px";
-  draggableWrapper.style.cursor = "grabbing";
+    draggableWrapper.offsetLeft - newCursorPositionX + 'px';
+  draggableWrapper.style.cursor = 'grabbing';
 }
 
 /**@description stop moving when mouse button is released */
@@ -58,7 +61,7 @@ function closeDragElement() {
 
   assertElementExists(draggableWrapper);
 
-  draggableWrapper.style.cursor = "grab";
+  draggableWrapper.style.cursor = 'grab';
 }
 
 /**
@@ -68,6 +71,6 @@ function closeDragElement() {
  */
 function assertElementExists(element) {
   if (!element) {
-    throw "ElementDoesNotExists";
+    throw 'ElementDoesNotExists';
   }
 }

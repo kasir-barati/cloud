@@ -517,4 +517,5 @@
 ## Footnotes
 
 [^1]: Application/system can handle more loads by adapting.
+
 [^2]: Self-hosted or on an EC2 instance.

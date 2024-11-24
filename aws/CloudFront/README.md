@@ -32,5 +32,7 @@
 ## Footnotes
 
 [^1]: An origin is the location where content is stored, and from which CloudFront gets content to serve to viewers.
+
 [^2]: It is called ingres.
+
 [^3]: Time To Live.
