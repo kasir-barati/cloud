@@ -26,9 +26,9 @@
 
    ![Choose or create a key pair](./assets/key-pair.png)
 
-7. If you specified a key pair in the previous step now you need to also [choose/create a security group](./security-groups.md#create-a-security-group) where SSH is open. Thus we can access our EC2 instance. in the network settings section:
+7. If you specified a key pair in the previous step now you need to also [choose/create a security group](./security-groups.md#create-a-security-group) where SSH and port 80 is open. Thus we can access our EC2 instance. in the network settings section:
 
-   ![Choose a security group which allows Inbound SSH requests](./assets/network-setting-choose-a-security-group.png)
+   ![Choose a security group which allows Inbound SSH requests + requests to port 80](./assets/network-setting-choose-a-security-group.png)
 
    > [!NOTE]
    >
