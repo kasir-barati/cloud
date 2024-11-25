@@ -225,9 +225,12 @@ Here we use Nginx, and NodeJS.
        sudo nano /etc/nginx/sites-available/default
        ```
 
-       Add a [`location` block directive](http://nginx.org/en/docs/http/ngx*http_core_module.html#location) for the backend right after `server_name *;`:
+       Add a [`location` block directive](http://nginx.org/en/docs/http/ngx*http_core_module.html#location) for the backend right after `server_name *;` + not seeing noisy logs about `favicon.ico` or `robots.txt`:
 
        ```nginx
+       location = /favicon.ico { log_not_found off; access_log off; }
+       location = /robots.txt { log_not_found off; access_log off; allow all; }
+
        location /api/ {
          proxy_pass       http://localhost:3000;
          proxy_set_header Host            $host;
@@ -275,3 +278,17 @@ Here we use Nginx, and NodeJS.
 > - Do **NOT** try to resort to `chmod 777`. But if you're just trying to make sure that is not causing you this issue it is fine.
 > - Sometime you need to do a hard refresh in your browser + restarting Nginx on your server.
 > - About `chmod` you need to keep in mind that **the whole full path to your final folder must be accessible!**
+
+## Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:3000/api. (Reason: CORS request did not succeed). Status code: (null).
+
+This was happening because my [fake frontend app](./expressjs-cors/frontend) I am making call to `http://localhost:3000/api`. Yes, I just realized that this JS code is being executed in end user's browser. On their machines and not in EC2 instance up on the server. I just for a sec confused it with NextJS's SSR feature.
+
+In other word:
+
+- My configuration for server was correct.
+- My configuration for Nginx was correct.
+- My configuration for ExpressJS was correct.
+
+I just forget a simple fact :kidding:.
+
+![Failed OPTIONS request](./assets/failed-options-req.png)
