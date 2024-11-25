@@ -35,7 +35,15 @@ Here we use Nginx, and NodeJS.
 
    ![Public IP v4 DNS record](./assets/public-ipv4-dns-address.png)
 
-8. Install [`pm2`](https://pm2.keymetrics.io/) on your EC2 instance globally:
+8. Install `n` globally and change your node version to match the one you selected in your GitHub actions:
+
+   ```shell
+   sudo npm i --global n
+   sudo n 22
+   hash -r # To reload your bash command line so that when you run `node -v` it uses node v22.
+   ```
+
+9. Install [`pm2`](https://pm2.keymetrics.io/) on your EC2 instance globally:
 
    ```shell
    sudo npm i --global pm2
@@ -44,6 +52,11 @@ Here we use Nginx, and NodeJS.
    <details>
      <summary>A few commands you most likely will need while using <code>pm2</code></summary>
      <ul>
+       <li>
+         <code>pm2 flush processName</code>
+         <br />
+         This will empty the current application logs managed by PM2.
+       </li>
        <li>
          <code>pm2 logs processName</code>
          <br />
@@ -67,14 +80,6 @@ Here we use Nginx, and NodeJS.
        </li>
      </ul>
    </details>
-
-9. Install `n` globally and change your node version to match the one you selected in your GitHub actions:
-
-   ```shell
-   sudo npm i --global n
-   sudo n 22
-   hash -r # To reload your bash command line so that when you run `node -v` it uses node v22.
-   ```
 
 10. <a id="createRepositoryLevelVariable" href="#createRepositoryLevelVariable">#</a> Create a new variable in your GitHub repo named `FRONTEND_URL` and copypaste your ["Public IPv4 DNS"](#findPublicIpv4DnsInAws) as its value:
 
