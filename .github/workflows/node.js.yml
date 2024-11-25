@@ -27,8 +27,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          cache-dependency-path: deploying-exercises/expressjs-cors/backend/package-lock.json
           cache: 'npm'
-      - run: npm i
+      - run: npm ci
       - run: npm run build --if-present
       - name: Restart the process on each new deploy or start the process if it does not exist
         run: pm2 restart backend || pm2 start index.js --name backend
