@@ -2,7 +2,7 @@
 
 import cors from 'cors';
 import express from 'express';
-import { loadEnv } from './load-env';
+import { loadEnv } from './load-env.js';
 
 loadEnv();
 
