@@ -10,11 +10,6 @@ loadEnv();
 const { port } = getEnv();
 const app = express();
 
-app.use((req, res, next) => {
-  console.dir(req.headers, { depth: null });
-  next();
-});
-
 app.use(
   cors({
     origin(origin, callback) {
