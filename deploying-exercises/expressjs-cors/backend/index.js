@@ -11,6 +11,8 @@ const app = express();
 const whitelist = [
   `http://127.0.0.1:${APP_PORT}`,
   `http://localhost:${APP_PORT}`,
+  `http://127.0.0.1:80`,
+  `http://localhost:80`,
   process.env.FRONTEND_URL,
 ];
 
