@@ -14,6 +14,8 @@ const whitelist = [
   process.env.FRONTEND_URL,
 ];
 
+console.log(whitelist);
+
 app.use(
   cors({
     origin(origin, callback) {
