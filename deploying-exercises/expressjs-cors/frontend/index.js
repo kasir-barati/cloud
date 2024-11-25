@@ -1,6 +1,9 @@
 // @ts-check
 
-fetch('http://localhost:3000/api', {
+const baseUrl =
+  'http://ec2-18-199-175-64.eu-central-1.compute.amazonaws.com';
+
+fetch(`${baseUrl}/api`, {
   method: 'put',
   credentials: 'include',
 })
