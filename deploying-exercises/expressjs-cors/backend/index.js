@@ -19,6 +19,11 @@ const whitelist = [
 app.use(
   cors({
     origin(origin, callback) {
+      console.group();
+      console.log(origin);
+      console.log(whitelist);
+      console.log(whitelist.indexOf(origin));
+      console.groupEnd();
       // Browser does NOT set the "Origin" header unless the API call's domain is different from the one where the page is being served.
       // Ref: https://stackoverflow.com/a/63684532/8784518
       if (whitelist.indexOf(origin) === -1 && origin) {
