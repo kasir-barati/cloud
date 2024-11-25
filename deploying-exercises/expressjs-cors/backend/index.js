@@ -19,6 +19,13 @@ console.log(whitelist);
 app.use(
   cors({
     origin(origin, callback) {
+      console.log('Inside the origin function!');
+      console.group();
+      console.log(whitelist.indexOf(origin));
+      console.log(whitelist);
+      console.log(origin);
+      console.groupEnd();
+
       if (whitelist.indexOf(origin) === -1) {
         callback(new Error('Not allowed by CORS'));
         return;
