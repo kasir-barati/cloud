@@ -35,3 +35,20 @@
 6. Finally add some tags [if you need any](../README.md#tags-in-aws).
 
    ![Specify tags for your security group](./assets/tags-for-security-group.png)
+
+## Attach a new security group to an EC2 instance
+
+### Opening port 80 of an EC2 instance
+
+Assume we need to allow an existing EC2 instance to be accessible through port 80.
+
+1.  To do this we need to create a new security group which allows inbound requests from port 80.
+2.  Then we can attach the newly create security group to our EC2 instance:
+
+    ![Change security groups in the menu](./assets/change-security-groups.png)
+
+3.  Then you can find the new security group and attach your EC2 instance to it.
+
+    ![Change security groups page](./assets/change-security-group-page.png)
+
+4.  Click on "save" button to apply changes. Now if you go to inbound rules tab of your EC2 instance you can see that now your EC2 instance is accessible through port 80 and 22.
