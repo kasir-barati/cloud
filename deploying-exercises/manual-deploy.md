@@ -105,7 +105,7 @@ Here we use Nginx, and NodeJS.
 
        3. Modify it the way you like. I am just gonna:
 
-          1. As the first step we need to do a quick cleanup.
+          1. As the first step we need to do a quick cleanup for both backend and frontend.
           2. Remove the on pull request event trigger since I do not need it. [Learn more here](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows).
 
              Instead I add `workflow_dispatch:` to be able to run this workflow manually too. Just in case.
@@ -114,20 +114,22 @@ Here we use Nginx, and NodeJS.
 
              Thus we need to specify where is our `package-lock.json`. Read more [here](https://github.com/actions/setup-node?tab=readme-ov-file#caching-global-packages-data)
 
-          3. Change the runner from `ubuntu-latest` to `self-hosted`. Indicating our intention of having the steps defined in this workflow to be executed on our EC2 instance.
-          4. I just want it to run the steps of jobs in NodeJS version 22. So I removed the other versions.
-          5. Since this is a monorepo we need to change our working directory too.
-          6. I removed the `npm test` too.
-          7. And lastly I wanted to start/restart the backend on each deploy + flushing pm2 logs.
+          3. Define the default working directory.
+          4. Define a workflow environment variable to prevent duplication.
+          5. Change the runner from `ubuntu-latest` to `self-hosted`. Indicating our intention of having the steps defined in this workflow to be executed on our EC2 instance.
+          6. I just want it to run the steps of jobs in NodeJS version 22. So I removed the other versions.
+          7. Since this is a monorepo we need to change our working directory too.
+          8. I removed the `npm test` too.
+          9. Start/restart the backend on each deploy + flushing pm2 logs.
 
              Note that we are using [`vars` context](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#vars-context) to access repository level variable we've created [here](#createRepositoryLevelVariable) as env variable.
+
+          10. Finally move the frontend file to `/var/www/html`. This can be also your `build`/`dist` directory.
 
           **This is the final product**:
 
           ```yaml
-          # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-          # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-          name: Node.js CI
+          name: Self-hosted backend & frontend
           on:
             push:
               branches: ['main']
@@ -135,35 +137,44 @@ Here we use Nginx, and NodeJS.
           defaults:
             run:
               working-directory: ./deploying-exercises/expressjs-cors/backend
+          env:
+            FRONTEND_DEST: /var/www/html
           jobs:
             build:
               runs-on: self-hosted
-              strategy:
-                matrix:
+                strategy:
+                  matrix:
                   node-version: [22.x]
                   # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-              steps:
-                - name: Cleanup deploying-exercises/expressjs-cors
-                  working-directory: ./deploying-exercises/expressjs-cors
-                  run: |
-                    ls -la .
-                    rm -rf * || true
-                    ls -la .
-                - uses: actions/checkout@v4
-                - name: Use Node.js ${{ matrix.node-version }}
-                  uses: actions/setup-node@v4
-                  with:
-                    node-version: ${{ matrix.node-version }}
-                    cache-dependency-path: deploying-exercises/expressjs-cors/backend/package-lock.json
-                    cache: 'npm'
-                - run: npm ci
-                - run: npm run build --if-present
-                - run: echo "FRONTEND_URL=${{ vars.FRONTEND_URL }}" >> .env
-                - name: Clean old logs of backend
-                  continue-on-error: true
-                  run: pm2 flush backend
-                - name: Restart the process on each new deploy or start the process if it does not exist
-                  run: pm2 restart backend || pm2 start index.js --name backend
+                steps:
+                  - name: Cleanup ${{ env.FRONTEND_DEST }}
+                    run: sudo rm -rf $FRONTEND_DEST
+                  - name: Cleanup deploying-exercises/expressjs-cors
+                    working-directory: ./deploying-exercises/expressjs-cors
+                    run: |
+                      ls -la .
+                      rm -rf * || true
+                      ls -la .
+                  - uses: actions/checkout@v4
+                  - name: Use Node.js ${{ matrix.node-version }}
+                    uses: actions/setup-node@v4
+                    with:
+                      node-version: ${{ matrix.node-version }}
+                      cache-dependency-path: deploying-exercises/expressjs-cors/backend/package-lock.json
+                      cache: 'npm'
+                  - run: npm ci
+                  - run: npm run build --if-present
+                  - run: echo "FRONTEND_URL=${{ vars.FRONTEND_URL }}" >> .env
+                  - name: Clean old logs of backend
+                    continue-on-error: true
+                    run: pm2 flush backend
+                  - name: Restart the process on each new deploy or start the process if it does not exist
+                    run: pm2 restart backend || pm2 start index.js --name backend
+                  - name: Move Frontend to ${{ env.FRONTEND_DEST }}
+                    run: |
+                      sudo mv ./frontend $FRONTEND_DEST
+                      sudo chown -R root:root $FRONTEND_DEST
+                    working-directory: ./deploying-exercises/expressjs-cors
           ```
 
        4. Change the file name to `self-hosted.yml` & commit it.
@@ -210,24 +221,11 @@ Here we use Nginx, and NodeJS.
 
 13. Now it is time to move on and configure our Nginx to show our frontend app:
 
-    1. Copy the path to `index.html` that we have in our frontend directory.
-
-       BTW this file most of the times will be generated after you build your ReactJS app. Thus you need to check where it is located exactly inside the `_work` directory (it should be inside `dist`, or `build`).
-
-       To find the path first `cd` to where your `index.html` is inside `_work` and the run the following command and copy the printed path.
-
-       ```shell
-       pwd
-       ```
-
-    2. ```shell
+    1. ```shell
        sudo nano /etc/nginx/sites-available/default
        ```
-    3. Instead of `root /var/www/html;` you need `root /home/ubuntu/actions-runner/_work/cloud/cloud/deploying-exercises/expressjs-cors/frontend;`
 
-       Do **not** forget the semicolon at the end of your [`root` directive](https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/).
-
-    4. And add a [`location` block directive](http://nginx.org/en/docs/http/ngx*http_core_module.html#location) for the backend right after `server_name *;`:
+       Add a [`location` block directive](http://nginx.org/en/docs/http/ngx*http_core_module.html#location) for the backend right after `server_name *;`:
 
        ```nginx
        location /api/ {
@@ -242,7 +240,7 @@ Here we use Nginx, and NodeJS.
        >
        > Keep your `APP_PORT` number in your backend app's env variable in line with the number entered here. Worth mentioning that its default value is 3000.
 
-    5. Save changes and then reload Nginx:
+    2. Save changes and then reload Nginx:
 
        ```shell
        sudo systemctl reload nginx
@@ -257,5 +255,23 @@ Here we use Nginx, and NodeJS.
 1. Check whether I can access my backend.
 2. Check the `systemctl` logs for nginx: `sudo systemctl status nginx`.
 3. Check Nginx logs: `cat /var/log/nginx/error.log`.
-4. Tried to restart the Nginx, sometimes it only needed a restart after `chmod 777` for testing.
-   1. Still dunno what is wrong with ubuntu and default permissions.
+4. Checked the current `chmod`:
+
+   ![Original chmod value](./assets/original-chmod.png)
+
+5. `sudo chmod -R 0755 frontend` did not help! I also tried to change it to 777 bu no luck. I did not go too crazy about it as to changing the whole path permissions: `/home/ubuntu/actions-runner/_work/cloud/cloud/deploying-exercises/expressjs-cors`.
+
+   ![chmod 755 did not help either](./assets/chmod-755.png)
+
+6. Next I tried to change their group: `sudo chown -R "$USER":www-data` but it did not work. Thus I decided to try a completely different approach, moving my frontend code to `/var/www/html` and changing its permissions + groups in a step in my GitHub workflow.
+
+   **And this solution actually worked, so here is what I did:**
+
+   1. Change `root` directive in my Nginx config back to `root /var/www/html`.
+   2. Removed everything inside it and moved my frontend app into it instead + changing ownership too. This was done via GitHub actions, [see this to see all changes in one place](https://github.com/kasir-barati/cloud/blob/f71dfb7401137603bda9eaf42bff32bf91d6881e/.github/workflows/self-hosted.yml#L15-L16).
+
+> [!CAUTION]
+>
+> - Do **NOT** try to resort to `chmod 777`. But if you're just trying to make sure that is not causing you this issue it is fine.
+> - Sometime you need to do a hard refresh in your browser + restarting Nginx on your server.
+> - About `chmod` you need to keep in mind that **the whole full path to your final folder must be accessible!**
