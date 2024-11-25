@@ -1,6 +1,6 @@
 // @ts-check
 
-fetch('http://localhost:3000', {
+fetch('http://localhost:3000/api', {
   method: 'put',
   credentials: 'include',
 })

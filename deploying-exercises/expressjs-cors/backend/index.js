@@ -30,11 +30,13 @@ app.use(
   }),
 );
 
-app.get('/', (_req, res) => {
+// Note that /api is what we set in our location directive block in our Nginx.
+app.get('/api', (_req, res) => {
   res.status(200).send('<h1>Hi from backend</h1>');
 });
 
-app.put('/', (_req, res) => {
+// Note that /api is what we set in our location directive block in our Nginx.
+app.put('/api', (_req, res) => {
   res.send({ message: 'cors' });
 });
 
