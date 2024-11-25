@@ -187,15 +187,26 @@ Here we use Nginx, and NodeJS.
 
        > [!CAUTION]
        >
-       > We diverge a little bit, after we've executed `./config.hs ...` we need to do the following steps:
+       > We diverge a little bit since we are on Linux and use [`systemd`](https://en.wikipedia.org/wiki/Systemd). After we've executed `./config.sh ...` we need to do the following steps:
        >
        > ![use svc.sh bash script instead of run.sh](./assets/run-svc-script-instead-of-run.png)
        >
-       > I tried to follow GitHub's steps and ran `./run.sh` but it did not work.
+       > - I tried to follow GitHub's steps and ran `./run.sh` but it did not work.
+       > - `svc.sh`:
+       >   - Set up the self-hosted runner application to run automatically when your machine starts.
+       >   - Available on Linux systems with `systemd`.
+       >   - `svc.sh` script has been created after adding the runner.
+       >   - Use it to install and manage the ["runner as a service"](./glossary.md#runnerAsAServiceGlossary):
+       >     - `sudo ./svc.sh install` installs the service.
+       >     - `sudo ./svc.sh start` starts the service.
 
     4. Finally after a couple of minutes if you go back to "Runners" tab in "Settings" you should see something like this:
 
        ![Final result, you can see your newly configured self hosted runner in settings page](./assets/newly-configured-self-hosted-runner.png)
+
+> [!CAUTION]
+>
+> Before removing your EC2 instance it is better to first uninstall the self-hosted runner and let GitHub to do some cleanups. Just go to your GitHub repo and "Settings" tab, click on "Runners" and delete runner.
 
 13. Now it is time to move on and configure our Nginx to show our frontend app:
 
