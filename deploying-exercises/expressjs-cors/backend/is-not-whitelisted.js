@@ -1,6 +1,6 @@
 // @ts-check
 
-import { getEnv } from './load-env.js';
+import { getEnv } from './env.helper.js';
 
 const { port, frontendUrl } = getEnv();
 

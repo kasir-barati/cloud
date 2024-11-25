@@ -2,7 +2,7 @@
 
 import cors from 'cors';
 import express from 'express';
-import { getEnv, loadEnv } from './load-env.js';
+import { getEnv, loadEnv } from './env.helper.js';
 import { isNotWhiteListed } from './is-not-whitelisted.js';
 
 loadEnv();

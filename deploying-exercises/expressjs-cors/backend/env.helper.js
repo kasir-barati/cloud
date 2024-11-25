@@ -16,6 +16,8 @@ export function getEnv() {
 
   for (const key in envs) {
     if (!envs[key]) {
+      console.error(envs[key]);
+
       const capitalizedKey =
         key[0].toUpperCase() + key.substring(1);
       throw `EmptyEnv${capitalizedKey}`;
