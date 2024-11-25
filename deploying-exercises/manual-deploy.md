@@ -218,6 +218,23 @@ Here we use Nginx, and NodeJS.
 > [!CAUTION]
 >
 > Before removing your EC2 instance it is better to first uninstall the self-hosted runner and let GitHub to do some cleanups. Just go to your GitHub repo and "Settings" tab, click on "Runners" and delete runner.
+>
+> 1. Uninstall your runner service via:
+>    ```shell
+>    sudo ./svc.sh uninstall
+>    ```
+> 2. After that navigate to "Settings" tab in your GitHub repo:
+>    ![Delete self-hosted runner step #1](./assets/delete-self-hosted-runner-step1.png)
+> 3. Then copypaste the command in your server:
+>    ![Delete self-hosted runner command](./assets/delete-self-hosted-runner-command.png)
+>
+> After doing those steps you should see something like this in your terminal, as you can see we are inside the same directory we started our self-hosted configuration process:
+> ![removing self-hosted runner](./assets/removing-self-hosted-runner.png)
+>
+> And now if you go to the same tab where it was showing you your self-hosted runner you'll see that it is not listed there anymore :hooray:.
+>
+> But if for some reason you cannot do it just force delete it, in that same popup just scroll down a little bit and you can see the button:
+> ![forcefully removing self-hosted runner](./assets/forcefully-removing-self-hosted-runner.png)
 
 13. Now it is time to move on and configure our Nginx to show our frontend app:
 
