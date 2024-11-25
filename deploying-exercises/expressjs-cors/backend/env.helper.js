@@ -16,12 +16,6 @@ export function getEnv() {
     frontendUrl: process.env.FRONTEND_URL,
   };
 
-  console.group();
-  console.log(process.env.FRONTEND_URL);
-  console.log(process.env.APP_PORT);
-  console.dir(envs, { depth: null });
-  console.groupEnd();
-
   for (const key in envs) {
     if (!envs[key]) {
       console.error(envs[key]);
