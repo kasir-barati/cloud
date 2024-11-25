@@ -28,6 +28,10 @@ app.use(
   }),
 );
 
+app.get('/', (_req, res) => {
+  res.status(200).send('<h1>Hi from backend</h1>');
+});
+
 app.put('/', (_req, res) => {
   res.send({ message: 'cors' });
 });
