@@ -31,6 +31,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
+      - use: echo "FRONTEND_URL=${{ vars.FRONTEND_URL }}" >> .env
       - name: Restart the process on each new deploy or start the process if it does not exist
         run: pm2 restart backend || pm2 start index.js --name backend
         env:
