@@ -49,25 +49,7 @@
   - Shield advanced costs something like $3,000 per month per organization.
   - DDoS response team for supporting AWS customers.
 
-# Glossary
+# Tags in AWS
 
-<dl>
-  <dt id="managedService">
-    Manged service:
-  </dt>
-  <dd>
-    Cloud computing services provided by AWS. They handle the underlying infrastructure and operational tasks, allowing users to focus on their applications and workloads. E.g. S3, RDS.
-  </dd>
-  <dt id="rdbms">
-    RDBMS
-  </dt>
-  <dd>
-    Relational Database Management System.
-  </dd>
-  <dt id="acl">
-    ACL:
-  </dt>
-  <dd>
-    Stands for Access Control List. It is a list of rules that specifies which users or systems are granted or denied access to a particular object or system resource.
-  </dd>
-</dl>
+- Can help you with security/lifecycle tasks.
+- E.g. in S3 you can grant permissions (for instance: allow a specific user with a specific tag to read some objects).

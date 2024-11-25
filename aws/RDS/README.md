@@ -1,7 +1,7 @@
 # RDS
 
-- Manged service.
-- [RDBMS](../README.md#rdbms).
+- [Manged service](../glossary.md#managedServiceGlossary).
+- [RDBMS](../glossary.md#rdbmsGlossary).
 - Can run Aurora <img src="./aurora-in-nature.png" width="40" />, PostgreSQL :elephant:, MySQL, MariaDB, Oracle, IBM DB2, Microsoft SQL Server.
 - | Pros                                                   |
   | ------------------------------------------------------ |

@@ -52,4 +52,27 @@
   <dd>
     Computer systems whose inter-communicating components are located on different networked computers (<a href="https://en.wikipedia.org/wiki/Distributed_computing">ref</a>).
   </dd>
+  <dt id="managedServiceGlossary">
+    <a href="#managedServiceGlossary">#</a>
+    Manged service:
+  </dt>
+  <dd>Cloud computing services provided by AWS.</dd>
+  <dd>
+    They handle the underlying infrastructure and operational tasks, allowing users to focus on their applications and workloads. E.g. S3, RDS.
+  </dd>
+  <dt id="rdbmsGlossary">
+    <a href="#rdbmsGlossary">#</a>
+    RDBMS
+  </dt>
+  <dd>
+    Relational Database Management System.
+  </dd>
+  <dt id="aclGlossary">
+    <a href="#aclGlossary">#</a>
+    ACL:
+  </dt>
+  <dd>Stands for Access Control List.</dd>
+  <dd>
+    It is a list of rules that specifies which users or systems are granted or denied access to a particular object or system resource.
+  </dd>
 </dl>

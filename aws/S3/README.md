@@ -59,8 +59,7 @@
 
   - User-defined metadata is limited to 2 KB in size.
 
-- Tags can help you with security/lifecycle tasks.
-  - E.g. granting permission to read objects with specific tag for a specific user.
+- Learn about tags [here](../README.md#tags-in-aws).
 
 ## Static website hosting
 
@@ -89,10 +88,10 @@
 
 ## S3 security
 
-| User based                                                                                                    | Resource based                                       |
-| ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Define IAM policies for the user.                                                                             | Defined bucket wide: Bucket [ACL](../README.md#acl). |
-| IAM principal can access S3 objects if: `Statement.Effect: ALLOW` & **no** explicit `Statement.Effect: DENY`. | Object level: Object [ACL](../README.md#acl).        |
+| User based                                                                                                    | Resource based                                                 |
+| ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Define IAM policies for the user.                                                                             | Defined bucket wide: Bucket [ACL](../glossary.md#aclGlossary). |
+| IAM principal can access S3 objects if: `Statement.Effect: ALLOW` & **no** explicit `Statement.Effect: DENY`. | Object level: Object [ACL](../glossary.md#aclGlossary).        |
 
 ### S3 bucket policy example
 

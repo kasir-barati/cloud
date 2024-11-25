@@ -16,7 +16,7 @@
   - AWS will create a default username for us called `ec2-user`, `root`, `ubuntu`, and a few others. It depends on the distribution you choose ([learn more](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html#ami-default-user-names)).
   - Do not forget to change the `.pem` file access permissions to "0400".
 
-  ![chmod 400 explanation](./ssh-chmod-400.png)
+  ![chmod 400 explanation](./assets/ssh-chmod-400.png)
 
 - We can select different OS images:
 
@@ -62,13 +62,13 @@
 ## EC2 service components
 
 - EC2 instances: Essentially leased virtual machines.
-- [EBS](#ebs) - Elastic [Block Storage](#blockStorageGlossary): stores data on virtual drives.
+- [EBS](#ebs) - Elastic [Block Storage](./glossary.md#blockStorageGlossary): stores data on virtual drives.
 - [ELB](#elb) - Elastic Load Balancer: balances load on EC2 instances.
 - ASG - Auto Scaling Group: Scale EC2 instances.
 
 ## Most used EC2 instance types
 
-![EC2 instance types](./ec2-instances.png)
+![EC2 instance types](./assets/ec2-instances.png)
 
 ## Purchasing options for EC2 instances
 
@@ -140,7 +140,7 @@
       <td>A complete, actual server.</td>
       <td>
         <ul>
-          <li>When you need <a href="#byolGlossary">BYOL</a> support.</li>
+          <li>When you need <a href="./glossary.md#byolGlossary">BYOL</a> support.</li>
           <li>Complying with regulatory requirements (e.g. software isolation).</li>
         </ul>
       </td>
@@ -179,7 +179,7 @@
   - Filters and manages traffics that reaches <small>(Go in (inbound) or out(outbound))</small> EC2 instance.
   - Can reference each other.
   - **KISS**: Do not overuse it.
-  - ![EC2 and SG relationship](./ec2-sg-relationship.png)
+  - ![EC2 and SG relationship](./assets/ec2-sg-relationship.png)
 
   > [!TIP]
   >
@@ -193,7 +193,7 @@
 - <span id="ebs">Elastic Block Store (EBS)</span>:
 
   - Attachable **network drive** (they ain't physical).
-  - Persistent [block storage](#blockStorageGlossary).
+  - Persistent [block storage](./glossary.md#blockStorageGlossary).
   - Limitations:
     - Performance (for higher performance use <a href="ec2InstanceStore">EC2 instance store</a>).
     - Mountable to one instance at a time (for being able to mount one storage to multiple EC2 instance look at [EFS](../EFS/README.md)).
@@ -250,7 +250,7 @@
               <li>
                 Indefinitely sustain their full provisioned
                 <a href="../glossary.md#iopsGlobalGlossary">IOPS</a> and
-                <a href="#throughputGlossary">throughput</a> performance.
+                <a href="./glossary.md#throughputGlossary">throughput</a> performance.
               </li>
               <li>
                 Cost-effective.
@@ -331,7 +331,7 @@
   - A physical hard drive installed on the hardware that our EC2 instance is running on.
   - You need to go to the "Community AMIs" when browsing for an OS with instance type storage:
 
-    ![Community AMIs](./ec2-instance-store.png)
+    ![Community AMIs](./assets/ec2-instance-store.png)
 
     - Better I/O:
       - High throughput.
@@ -343,11 +343,11 @@
 
 - Load balancer:
 
-  - Manged service.
+  - [Manged service](../glossary.md#managedServiceGlossary).
   - What we'll expose publicly.
   - Forwards internet traffic to multiple EC2 instances.
 
-    ![Load balancer](./load-balancer.png)
+    ![Load balancer](./assets/load-balancer.png)
 
   - What it does for us:
     1. Load spreading.
@@ -400,9 +400,9 @@
         </tr>
         <tr>
           <th>Infographic</th>
-          <td><img src="./gwlb.png" /></td>
-          <td><img src="./nlb.png" /></td>
-          <td><img src="./alb.png" /></td>
+          <td><img src="./assets/gwlb.png" /></td>
+          <td><img src="./assets/nlb.png" /></td>
+          <td><img src="./assets/alb.png" /></td>
         </tr>
       </tbody>
     </table>
@@ -471,51 +471,7 @@
 | Compliance validation.     | Data security.                       |
 | Data replication for EBS.  | IAM roles/users (Access management). |
 
-## Glossary
-
-<dl>
-  <dt id="#throughputGlossary">
-    Throughput:
-  </dt>
-  <dd>
-    The ability to process a large volume of data transfer operations per seconds. Reading and writing speed to the storage volume.
-  </dd>
-  <dt id="blockStorageGlossary">
-    Block storage:
-  </dt>
-  <dd>
-    <ul>
-      <li>
-        Commonly used storage technology used in cloud computing.
-      </li>
-      <li>
-        Store data in fixed-sized blocks.
-        <ul>
-          <li>
-            Each block has a unique ID.
-          </li>
-          <li>
-            Because of this it is very scalable.
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </dd>
-  <dt id="#byolGlossary">
-    BYOL:
-  </dt>
-  <dd>
-    <ul>
-      <li>Bring Your Own License.</li>
-      <li>
-        A licensing model that lets companies use their licenses flexibly, whether on-premise, or in the cloud.
-      </li>
-    </ul>
-  </dd>
-</dl>
-
 ## Footnotes
 
 [^1]: Application/system can handle more loads by adapting.
-
 [^2]: Self-hosted or on an EC2 instance.

@@ -143,11 +143,9 @@ So now your EC2 instances who are within the public subnet must be reachable thr
 
 # Security Group
 
-- Virtual firewall around our EC2 instance
-- They are associated with _network interfaces_.
-- Stateful.
-- Can only ALLOW.
-- Can reference other security groups.
+> [!NOTE]
+>
+> Learn about it security groups [here](../EC2/security-groups.md).
 
 ![Security group usage besides NACL](./assets/security-groups.png)
 
