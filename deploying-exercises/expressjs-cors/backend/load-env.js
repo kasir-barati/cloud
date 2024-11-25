@@ -1,13 +1,10 @@
 // @ts-check
 
 import { resolve } from 'path';
+import { config } from 'dotenv';
 
-export async function loadEnv() {
-  if (process.env.NODE_ENV === 'development') {
-    const { config } = await import('dotenv');
-
-    config({
-      path: resolve(process.cwd(), '.env'),
-    });
-  }
+export function loadEnv() {
+  config({
+    path: resolve(process.cwd(), '.env'),
+  });
 }

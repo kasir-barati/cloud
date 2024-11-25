@@ -4,7 +4,7 @@ import cors from 'cors';
 import express from 'express';
 import { loadEnv } from './load-env';
 
-await loadEnv();
+loadEnv();
 
 const APP_PORT = process.env.APP_PORT ?? 3000;
 const app = express();
