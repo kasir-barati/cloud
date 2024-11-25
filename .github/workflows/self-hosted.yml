@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Cleanup ${{ env.FRONTEND_DEST }}
-        run: rm -rf $FRONTEND_DEST
+        run: sudo rm -rf $FRONTEND_DEST
       - name: Cleanup deploying-exercises/expressjs-cors
         working-directory: ./deploying-exercises/expressjs-cors
         run: |
@@ -49,5 +49,5 @@ jobs:
       - name: Restart the process on each new deploy or start the process if it does not exist
         run: pm2 restart backend || pm2 start index.js --name backend
       - name: Move Frontend to ${{ env.FRONTEND_DEST }}
-        run: mv ./frontend $FRONTEND_DEST
+        run: sudo mv ./frontend $FRONTEND_DEST
         working-directory: ./deploying-exercises/expressjs-cors
