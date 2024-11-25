@@ -14,19 +14,12 @@ const whitelist = [
   process.env.FRONTEND_URL,
 ];
 
-console.log(whitelist);
-
 app.use(
   cors({
     origin(origin, callback) {
-      console.log('Inside the origin function!');
-      console.group();
-      console.log(whitelist.indexOf(origin));
-      console.log(whitelist);
-      console.log(origin);
-      console.groupEnd();
-
-      if (whitelist.indexOf(origin) === -1) {
+      // Browser does NOT set the "Origin" header unless the API call's domain is different from the one where the page is being served.
+      // Ref: https://stackoverflow.com/a/63684532/8784518
+      if (whitelist.indexOf(origin) === -1 && origin) {
         callback(new Error('Not allowed by CORS'));
         return;
       }
