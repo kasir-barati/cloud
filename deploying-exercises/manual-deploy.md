@@ -105,17 +105,20 @@ Here we use Nginx, and NodeJS.
 
        3. Modify it the way you like. I am just gonna:
 
-          1. Remove the on pull request event trigger since I do not need it. [Learn more here](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows).
+          1. As the first step we need to do a quick cleanup.
+          2. Remove the on pull request event trigger since I do not need it. [Learn more here](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows).
 
              Instead I add `workflow_dispatch:` to be able to run this workflow manually too. Just in case.
 
-             On another note, since the `actions/setup-node@v4` will look for a `package-lock.json` file in the root of our repo and in our case we do not have one (it is a monorepo). Thus we need to specify where is our `package-lock.json`. Read more [here](https://github.com/actions/setup-node?tab=readme-ov-file#caching-global-packages-data)
+             On another note, since the `actions/setup-node@v4` will look for a `package-lock.json` file in the root of our repo in order to cache the npm installation, and our repo does not have one (it's a monorepo).
 
-          2. Change the runner from `ubuntu-latest` to `self-hosted`. Indicating my intention of having the steps defined in this workflow to be executed on my EC2 instance.
-          3. I just want it to run the steps of jobs in NodeJS version 22. So I will remove the other versions.
-          4. Since this is a monorepo we need to change our working directory too.
-          5. I removed the `npm test` too.
-          6. And lastly I wanted to start/restart the backend on each deploy.
+             Thus we need to specify where is our `package-lock.json`. Read more [here](https://github.com/actions/setup-node?tab=readme-ov-file#caching-global-packages-data)
+
+          3. Change the runner from `ubuntu-latest` to `self-hosted`. Indicating our intention of having the steps defined in this workflow to be executed on our EC2 instance.
+          4. I just want it to run the steps of jobs in NodeJS version 22. So I removed the other versions.
+          5. Since this is a monorepo we need to change our working directory too.
+          6. I removed the `npm test` too.
+          7. And lastly I wanted to start/restart the backend on each deploy + flushing pm2 logs.
 
              Note that we are using [`vars` context](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#vars-context) to access repository level variable we've created [here](#createRepositoryLevelVariable) as env variable.
 
@@ -140,6 +143,12 @@ Here we use Nginx, and NodeJS.
                   node-version: [22.x]
                   # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
               steps:
+                - name: Cleanup deploying-exercises/expressjs-cors
+                  working-directory: ./deploying-exercises/expressjs-cors
+                  run: |
+                    ls -la .
+                    rm -rf * || true
+                    ls -la .
                 - uses: actions/checkout@v4
                 - name: Use Node.js ${{ matrix.node-version }}
                   uses: actions/setup-node@v4
@@ -149,13 +158,15 @@ Here we use Nginx, and NodeJS.
                     cache: 'npm'
                 - run: npm ci
                 - run: npm run build --if-present
+                - run: echo "FRONTEND_URL=${{ vars.FRONTEND_URL }}" >> .env
+                - name: Clean old logs of backend
+                  continue-on-error: true
+                  run: pm2 flush backend
                 - name: Restart the process on each new deploy or start the process if it does not exist
                   run: pm2 restart backend || pm2 start index.js --name backend
-                  env:
-                    FRONTEND_URL: ${{ vars.FRONTEND_URL }}
           ```
 
-       4. Commit the file after necessary modifications.
+       4. Change the file name to `self-hosted.yml` & commit it.
 
 12. Create a self hosted runner in GitHub:
 
