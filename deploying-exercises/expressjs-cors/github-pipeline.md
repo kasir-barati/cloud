@@ -1,6 +1,7 @@
 > [!NOTE]
 >
-> Why I wrote this: I was learning GraphQL in Apollo server's doc and [they were talking about CORS HTTP-header-based protocol](https://www.apollographql.com/docs/apollo-server/security/cors) that dawned on me that I do not have a hands on experience with it.
+> - Why I wrote this: I was learning GraphQL in Apollo server's doc and [they were talking about CORS HTTP-header-based protocol](https://www.apollographql.com/docs/apollo-server/security/cors) that dawned on me that I do not have a hands on experience with it.
+> - Need to learn what is CORS? [Read this then](./what-is-cors.md).
 
 # Preparation
 
