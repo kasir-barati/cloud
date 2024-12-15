@@ -109,7 +109,7 @@
   2. Make it publicly accessible.
 
 - IAM access analyzer for S3:
-  - Alerts you on accessible S3 buckets.
+  - It alerts us whenever it detects a potential vulnerability in our access configurations.
   - Enables us to see access patterns to a bucket.
 
 ## S3 encryption
