@@ -75,4 +75,52 @@
   <dd>
     It is a list of rules that specifies which users or systems are granted or denied access to a particular object or system resource.
   </dd>
+  <dt id="autoScalingGroupDefinition">
+    <a href="#autoScalingGroupDefinition">#</a>
+    Auto Scaling Group
+  </dt>
+  <dd>
+    <table>
+      <caption>To scale we have 2 options:</caption>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Vertical Scaling</th>
+          <th>Horizontal Scaling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>How it works</th>
+          <td>Increase the size (e.g. t2.micro => t2.large).</td>
+          <td>Increase the number of instances (e.g. more ElastiCache instances).</td>
+        </tr>
+        <tr>
+          <th>Considerations</th>
+          <td>Limited (Cannot be scaled indefinitely).</td>
+          <td>
+            <ul>
+              <li>
+                <b>Distributed systems</b>: more work regarding data integrity and
+                other aspects of a distributed system.
+              </li>
+              <li>
+                <b>High-availability</b>: aligned with
+                <a href="#elasticityGlobalGlossary">Elasticity</a>.
+              </li>
+              <li>
+                You can setup your ASG template to provision new EC2 instances
+                in different AZs.
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th>AKA</th>
+          <td>Scale up/down.</td>
+          <td>Scale out/in.</td>
+        </tr>
+      </tbody>
+    </table>
+  </dd>
 </dl>

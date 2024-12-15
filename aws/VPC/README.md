@@ -162,7 +162,7 @@ So now your EC2 instances who are within the public subnet must be reachable thr
 
 - Log <span style="text-decoration: underline dotted; text-underline-offset: 0.1em; cursor: help;" title="Things like VPC, subnets, Elastic network interface.">network</span> traffics.
   - It is not limited to EC2 instances and your RESTful APIs essentially.
-  - Can be AWS managed services such as: RDS, Aurora, ElastiCache, Elastic load balancer, etc.
+  - Can be AWS managed services such as: RDS, Aurora, [ElastiCache](../ElastiCache/README.md), Elastic load balancer, etc.
   - Store them in S3, CloudWatch logs, Kinesis data firehouse.
 - Identify patterns, threats, and risks across your VPC network.
 

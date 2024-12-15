@@ -414,51 +414,7 @@
 
     - Distributes the workload between EC2 instances in an ASG.
 
-- <span id="asg">Auto Scaling Group</span>:
-
-  - To scale[^1] we have 2 options:
-
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Vertical Scaling</th>
-          <th>Horizontal Scaling</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>How it works</th>
-          <td>Increase the size (e.g. t2.micro => t2.large).</td>
-          <td>Increase the number of instances.</td>
-        </tr>
-        <tr>
-          <th>Considerations</th>
-          <td>Limited (Cannot be scaled indefinitely).</td>
-          <td>
-            <ul>
-              <li>
-                <b>Distributed systems</b>: more work regarding data integrity and
-                other aspects of a distributed system.
-              </li>
-              <li>
-                <b>High-availability</b>: aliged with
-                <a href="../glossary.md#elasticityGlobalGlossary">Elasticity</a>.
-              </li>
-              <li>
-                You can setup your ASG template to provision new EC2 instances
-                in different AZs.
-              </li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <th>AKA</th>
-          <td>Scale up/down.</td>
-          <td>Scale out/in.</td>
-        </tr>
-      </tbody>
-    </table>
+- Learn more about ASG [here](../glossary.md#autoScalingGroupDefinition)
 
 ### Local zones
 

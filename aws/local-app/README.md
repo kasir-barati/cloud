@@ -20,7 +20,7 @@
 
   3. Now you can pick this new zone when creating for example an EC2 instance.
 
-- Compatible with some services: EC2, ElastiCache, ...
+- Compatible with some services: EC2, [ElastiCache](../ElastiCache/README.md), ...
 - All regions do not have LZ. You can check it for EC2 by going to "EC2 Dashboard", and then on the far right hand side "Account attributes". Click on the zones.
 
   ![Zones](./zones.png)
