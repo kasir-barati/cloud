@@ -15,7 +15,7 @@
 
 ## Edge locations
 
-- AWS data centers designed to deliver services with the lowest latency possible.
+- AWS data centers designed to deliver services with the lowest [latency](../glossary.md#latencyGlobalGlossary) possible.
 - Usually part of a larger CDN distribution.
 - Optimized for caching and delivering content to end-users efficiently.
 - Closer to users than Regions or AZs.
@@ -77,14 +77,10 @@ In other word:
 - **PoP**: an intersection where data traffic from various networks meets and gets routed.
 - **Edge Location**: a strategically positioned warehouse[^1] within a content delivery network, ensuring fast and efficient delivery of cached content to users in a specific region.
 
-## Latency
-
-- The necessary time for a packet on network to reach the other party (e.g. a server).
-
 # Global apps
 
-- Decreased latency => better UX.
-- Disaster recovery => better availability (HA).
+- Decreased [latency](../glossary.md#latencyGlobalGlossary) => better UX.
+- Disaster recovery => better [availability](../glossary.md#availabilityGlobalGlossary) (HA).
 
 ## Different application deployment architecture
 
@@ -100,14 +96,14 @@ In other word:
   </thead>
   <tbody style="text-align: center">
     <tr>
-      <td>High-Availability</td>
+      <td><a href="../glossary.md#availabilityGlobalGlossary">High-Availability</a></td>
       <td><span style="color: red">&cross;</span></td>
       <td><span style="color: green">&check;</span></td>
       <td><span style="color: green">&check;</span></td>
       <td><span style="color: green">&check;</span></td>
     </tr>
     <tr>
-      <td>Global latency</td>
+      <td>Mitigate global latency</td>
       <td><span style="color: red">&cross;</span></td>
       <td><span style="color: red">&cross;</span></td>
       <td>

@@ -62,8 +62,8 @@
 ## EC2 service components
 
 - EC2 instances: Essentially leased virtual machines.
-- [EBS](#ebs) - Elastic [Block Storage](./glossary.md#blockStorageGlossary): stores data on virtual drives.
-- [ELB](#elb) - Elastic Load Balancer: balances load on EC2 instances.
+- [EBS](#elasticBlockStorage) - Elastic [Block Storage](./glossary.md#blockStorageGlossary): stores data on virtual drives.
+- [ELB](#elasticLoadBalancer) - Elastic Load Balancer: balances load on EC2 instances.
 - ASG - Auto Scaling Group: Scale EC2 instances.
 
 ## Most used EC2 instance types
@@ -190,7 +190,7 @@
   >
   > Define a separate security group for SSH access and reuse it wherever needed.
 
-- <span id="ebs">Elastic Block Store (EBS)</span>:
+- <a id="elasticBlockStorage" href="#elasticBlockStorage">#</a> Elastic Block Store (EBS):
 
   - Attachable **network drive** (they ain't physical).
   - Persistent [block storage](./glossary.md#blockStorageGlossary).
@@ -303,7 +303,7 @@
             <ul>
               <li>ETL.</li>
               <li>Kafka.</li>
-              <li>Amazon EMR.</li>
+              <li><a href="../Elastic-MapReduce/README.md">Amazon EMR</a>.</li>
               <li>Log processing.</li>
               <li>Data warehouses.</li>
             </ul>
@@ -355,7 +355,7 @@
     3. Performs regular health checks.
     4. Provides a single point of access (DNS).
     5. Won't send load to unhealthy EC2 instances.
-    6. High-availability across zones by having one load balancer.
+    6. [High-availability](../glossary.md#availabilityGlobalGlossary) across zones by having one load balancer.
   - It is cheaper to have an on-premise[^2] load balancer.
   - It can be:
 
@@ -410,11 +410,11 @@
   - To create a load balancer:
     1. Create a security group (based on IP, port, or protocol).
     2. Create a target group (instances we wanna load balance).
-  - <span id="elb">Elastic Load Balancing (EBS)</span>:
+  - <a id="elasticLoadBalancer" href="#elasticLoadBalancer">#</a> Elastic Load Balancing (ELB):
 
     - Distributes the workload between EC2 instances in an ASG.
 
-- Learn more about ASG [here](../glossary.md#autoScalingGroupDefinition)
+- Learn more about ASG [here](../glossary.md#autoScalingGroupGlobalGlossary)
 
 ### Local zones
 

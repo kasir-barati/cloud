@@ -62,7 +62,7 @@
           <li>Can be deployed across up to 3 AZs.</li>
           <li>Keep data on your standby database instance (durability).</li>
           <li>
-            High-availability:
+            <a href="../glossary.md#availabilityGlobalGlossary">High-availability</a>:
             <ul>
               <li>Automatic fail over.</li>
               <li>Deploy a standby instance in a second AZ.</li>

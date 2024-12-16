@@ -75,8 +75,8 @@
   <dd>
     It is a list of rules that specifies which users or systems are granted or denied access to a particular object or system resource.
   </dd>
-  <dt id="autoScalingGroupDefinition">
-    <a href="#autoScalingGroupDefinition">#</a>
+  <dt id="autoScalingGroupGlobalGlossary">
+    <a href="#autoScalingGroupGlobalGlossary">#</a>
     Auto Scaling Group
   </dt>
   <dd>
@@ -122,5 +122,34 @@
         </tr>
       </tbody>
     </table>
+  </dd>
+  <dt id="availabilityGlobalGlossary">
+    <a href="#availabilityGlobalGlossary">#</a>
+    Availability
+  </dt>
+  <dd>
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mfrac>
+        <mi>Uptime</mi>
+        <mrow>
+          <mi>Uptime</mi>
+          <mo>+</mo>
+          <mi>Downtime</mi>
+        </mrow>
+      </mfrac>
+    </math>
+  </dd>
+  <dd>
+    The percentage of the expected time that a service is actually operational & accessible.
+  </dd>
+  <dt id="latencyGlobalGlossary">
+    <a href="#latencyGlobalGlossary">#</a>
+    Latency
+  </dt>
+  <dd>
+    The necessary time for a packet on network to reach the other party (e.g. a server).
+  </dd>
+  <dd>
+    <img src="./assets/latency-global-glossary.png" alt="Infographic of network latency" />
   </dd>
 </dl>

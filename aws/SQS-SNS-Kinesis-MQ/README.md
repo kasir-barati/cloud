@@ -358,7 +358,7 @@ SQS, SNS, and their friends are proprietary used in AWS. But we might need somet
 ## MQ
 
 - Message broker for RabbitMQ, and ActiveMQ.
-- Needs more configuration in terms of <table style="display: inline"><tr><td>scaling</td></tr><tr><td>Disaster recovery plan</td></tr><tr><td>High-Availability</td></tr><tr><td>Global latency</td></tr></table>.
+- Needs more configuration in terms of <table style="display: inline"><tr><td>scaling</td></tr><tr><td>Disaster recovery plan</td></tr><tr><td><a href="../glossary.md#availabilityGlobalGlossary">High-Availability</a></td></tr><tr><td>Global latency</td></tr></table>.
 - Comes with queue and topic feature, similar to SQS and SNS respectively.
 
 # SQS VS RabbitMQ

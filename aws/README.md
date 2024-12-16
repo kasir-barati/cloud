@@ -1,3 +1,7 @@
+> [!NOTE]
+>
+> [AWS Acceptable use policy](https://aws.amazon.com/aup/) dictates for what type of work you can use AWS service for.
+
 # Security
 
 - Who is responsible for what?
@@ -30,7 +34,7 @@
 
 ## DDoS
 
-![DDoS attack overall mechanism and inner parts infographic](./ddos-attack.webp)
+![DDoS attack overall mechanism and inner parts infographic](./assets/ddos-attack.webp)
 
 - Stands for Distributed Denial of Service.
 - Protect your app against DDoS with:

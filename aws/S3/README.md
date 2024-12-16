@@ -37,7 +37,7 @@
 - They're files we've uploaded into our S3 bucket.
 - Each object has a key.
 
-  ![Key structure](./key.png)
+  ![Key structure](./assets/key.png)
 
   - You need to specify object name at upload time. For more inf o about what is valid read [this guideline](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines).
 
@@ -102,9 +102,7 @@
      - In this case for seeing objects you need:
 
        - A pre-signed URL.
-       - A bucket policy which allows us to retrieve objects.
-
-         ![S3 bucket policy example](./s3-bucket-policy-example.png)
+       - A bucket policy which allows us to retrieve objects. [You can see one here](../IAM/README.md#iam-policy-structure).
 
   2. Make it publicly accessible.
 
@@ -169,7 +167,7 @@
 - Intelligent-Tiering.
 - Express one zone.
 
-![S3 storage classes](./s3-storage-classes.png)
+![S3 storage classes](./assets/s3-storage-classes.png)
 
 ## Shared responsibility model for S3
 
