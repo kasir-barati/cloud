@@ -7,6 +7,10 @@
 >
 > Initial codebase: this repo was intended to be a professional RESTful API in time, but it didn't come to fruition. So now you can see my endeavour [here](https://github.com/kasir-barati/paas-system/tree/initial-branch).
 
+## Be Careful With Your Bills
+
+Learn about some common pitfalls when it comes to cloud and its bills [here](./no-surprise-bill/README.md).
+
 # Handwritings
 
 I first started by jotting down on a paper what I was learning about AWS but then I change my mind and decided to document it in a more accessible way. That's the back story behind this exhaustive doc. But you can always find my handwriting [here](./aws/handwritings/README.md).
