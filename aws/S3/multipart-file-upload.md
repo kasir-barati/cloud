@@ -83,7 +83,15 @@ This picture I believe is a nice way to visualize it:
 
 ![Checksum generation at source](./assets/checksum-generation-at-source.png)
 
+> [!CAUTION]
+>
+> There are cases where your client have to have a multipart upload and the file might as well be bigger than 5MB. So you can do it with multipart upload, but now you need to have a single precalculated checksum for the whole file. In this case it is a good idea to have a `FULL_OBJECT` checksum type. For this you only can use CRC-based algorithms.
+
 ## Process
+
+> [!TIP]
+>
+> See how you can do it in NestJS [here](https://github.com/kasir-barati/nestjs-materials/tree/main/microservices/grpc/apps/file-upload). Do not forget to gimme a star :).
 
 1. A CreateMultipartUpload call to start the process.
 
@@ -130,7 +138,7 @@ This picture I believe is a nice way to visualize it:
 - It indicates the part's position within the object which will be eventually created if we complete
   the multipart upload.
 - AWS will overwrite the part if the part number has already been uploaded for that upload ID.
-- Each par should not exceed the amount specified by the AWS S3 max part size ([ref](https:/
+- Each part should not exceed the amount specified by the AWS S3 max part size ([ref](https:/
   docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html)).
 
 ## CompleteMultipartUploadCommand or AbortMultipartUploadCommand
