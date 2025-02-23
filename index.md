@@ -32,7 +32,10 @@ I first started by jotting down on a paper what I was learning about AWS but the
 - [Local Applications](./aws/local-app/README.md)
 - [Outposts](./aws/Outposts/README.md)
 - [Route 53](./aws/Route-53/README.md)
-- [S3 Transfer Acceleration](./aws/S3-Transfer-Acceleration/README.md)
+- [S3](./aws/S3/README.md).
+  - [S3 Transfer Acceleration](./aws/S3-Transfer-Acceleration/README.md)
+  - [Lifecycle Rules](./aws/S3/life-cycle-rules.md).
+  - [Multipart File Upload in AWS S3](./aws/S3/multipart-file-upload.md).
 - [SQS, SNS, Kinesis, MQ](./aws/SQS-SNS-Kinesis-MQ/README.md)
 - [VPC](./aws/VPC/README.md)
 - [Wavelength](./aws/Wavelength/README.md)
