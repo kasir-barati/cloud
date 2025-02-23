@@ -18,26 +18,15 @@ When your object size reaches 100 MB, you should consider using multipart upload
 - Verifies that assets are not altered when they are copied.
 - Perform these integrity checks as a durability best practice.
 - For supported checksum algorithms look at [this part](#checksum-type).
-- Choose a checksum algorithm to use when uploading, copying, or batch copying your data.
-
-> [!NOTE]
->
-> Use an algorithm to iterate sequentially over **every** byte in a file.
-
-### How Checksum Works
-
-1. You choose a checksum algorithm when you wanna start uploading your data.
-2. Amazon S3 uses that algorithm to compute a checksum on the server side and validates it with the provided value before storing the object.
-   - Amazon S3 also stores the checksum as part of the object metadata.
 
 > [!TIP]
 >
 > You wanna upload something:
 >
-> 1. Optionally include a **precalculated checksum** as part of your request.
+> 1. Use a **precalculated checksum**.
 > 2. Use the **full object checksum type**.
 
-### Checksum Type
+### Checksum Types
 
 - **Full object checksums**: Calculated based on all of the content of a multipart upload, covering all data from the first byte of the first part to the last byte of the last part.
 - **Composite checksums**: They are being calculated based on each part's checksums. In other word it is a checksum of checksums as described in the following videos:
@@ -67,6 +56,15 @@ When your object size reaches 100 MB, you should consider using multipart upload
 > ```
 >
 > I still dunno how to generate a CRC32 checksum hash in terminal. So feel free to file an issue and lemme know how I can do it.
+
+### How To Use The `FULL_OBJECT` Checksum Type
+
+1. You choose a checksum algorithm when you wanna start uploading your data.
+2. Calculate the checksum of your file:
+   - Read the file chunk by chunk and try to upload them, but at the same time you will calculate the checksum. So no need to read the entire file.
+   - We're not gonna use the checksum itself, but rather a hash of it as I've already explained it [here](https://stackoverflow.com/a/79440513/8784518). Feel free to upvote my answer there :).
+3. Amazon S3 uses that algorithm to compute a checksum on its own servers and validates it with the provided value by you.
+   - Amazon S3 also stores the checksum as part of the object metadata.
 
 #### Which Checksum Algorithm Should You Pick?
 
