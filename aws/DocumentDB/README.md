@@ -40,3 +40,5 @@
 > [!TIP]
 >
 > An `$or` operator in a query means that first condition should be fulfilled, union with all documents that match the other condition. If you don’t have a separate index for each of the conditions MongoDB will perform a [collection scan (`COLLSCAN`)](https://www.mongodb.com/docs/manual/reference/explain-results/#collection-scan) anyway.
+>
+> [Ref](https://www.mongodb.com/community/forums/t/is-in-operator-able-to-use-index/150459/4).
