@@ -36,3 +36,7 @@
 - Selects the most efficient query plan based on available indexes.
 - Evaluates plans by running them during a trial period.
 - The winning plan is the one that produces the most results with the least amount of work.
+
+> [!TIP]
+>
+> An `$or` operator in a query means that first condition should be fulfilled, union with all documents that match the other condition. If you don’t have a separate index for each of the conditions MongoDB will perform a [collection scan (`COLLSCAN`)](https://www.mongodb.com/docs/manual/reference/explain-results/#collection-scan) anyway.
