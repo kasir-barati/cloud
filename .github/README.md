@@ -25,6 +25,8 @@ I first started by jotting down on a paper what I was learning about AWS but the
 - [CloudTrail](../aws/CloudTrail/README.md)
 - [CloudWatch](../aws/CloudWatch/README.md)
 - [CodeGuru](../aws/CodeGuru/README.md)
+- [DocumentDB](../aws/DocumentDB/README.md).
+- [DynamoDB](../aws/DynamoDB/README.md).
 - [EC2](../aws/EC2/README.md)
   - [Manual deployment processes](../deploying-exercises/manual-deploy.md).
   - [Deploy an ExpressJS on EC2 + CORS](../deploying-exercises/expressjs-cors/github-pipeline.md).
